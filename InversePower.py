@@ -1,11 +1,13 @@
 import numpy as np
 from math import copysign
+import sys
 
 def InversePower(mat,iterations,threshold):
     try:
         mat = np.linalg.inv(mat)
     except:
         print "Matrix Not Invertible"
+        sys.exit(0)
     n = mat.shape[0]
     x = np.array([1 for i in range(n)])
     x.shape = (n,1)
