@@ -14,17 +14,17 @@ def DirectPower(mat,iterations,threshold):
             err = 100.0*(tmpM-M)/tmpM
             err = copysign(err,1)
             if err<threshold :
-                print i+1,"\t", u/tmpM,"\t", tmpM,"\t", err
+                print i+1,"\t\t", u/tmpM,"\t\t", tmpM,"\t\t", err
                 print "Error Threshold Hit"
                 u.shape = (n,1)
                 return tmpM,u/tmpM
             M = tmpM
             x = u/M
-            print i+1,"\t", x,"\t", tmpM,"\t", err
+            print i+1,"\t\t", x,"\t\t", tmpM,"\t\t", err
         except:
             M = tmpM
             x = u/M
-            print i+1,"\t", x,"\t", M
+            print i+1,"\t\t", x,"\t\t", M
         x.shape = (n,1)
     
     print "Exceeded total Iterations"
