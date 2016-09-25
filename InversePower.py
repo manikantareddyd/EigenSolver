@@ -13,8 +13,6 @@ def DirectPower(mat,iterations,threshold):
             err = 100.0*(tmpM-M)/tmpM
             err = copysign(err,1)
             if err<threshold :
-                print i+1, u/tmpM, tmpM, err
-                print "Error Threshold Hit"
                 return tmpM,u/tmpM
             print i+1, u/tmpM, tmpM, err
             M = tmpM
@@ -23,7 +21,6 @@ def DirectPower(mat,iterations,threshold):
             M = tmpM
             x = u/M
             print i+1, x, M
-    print "Exceeded total Iterations"
     return M,x
 
 if __name__=="__main__" :
