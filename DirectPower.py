@@ -7,22 +7,26 @@ def DirectPower(mat,iterations,threshold):
     x.shape = (n,1)
     for i in range(iterations):
         u = mat.dot(x)
+        u.shape = (1,n)
         tmpM = max(u.max(),u.min(),key=abs)
         try:
             # print 1, u.max(), M
             err = 100.0*(tmpM-M)/tmpM
             err = copysign(err,1)
             if err<threshold :
-                print i+1, u/tmpM, tmpM, err
+                print i+1,"\t", u/tmpM,"\t", tmpM,"\t", err
                 print "Error Threshold Hit"
+                u.shape = (n,1)
                 return tmpM,u/tmpM
-            print i+1, u/tmpM, tmpM, err
             M = tmpM
             x = u/M
+            print i+1,"\t", x,"\t", tmpM,"\t", err
         except:
             M = tmpM
             x = u/M
-            print i+1, x, M
+            print i+1,"\t", x,"\t", M
+        x.shape = (n,1)
+    
     print "Exceeded total Iterations"
     return M,x
 
