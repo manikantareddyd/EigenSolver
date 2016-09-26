@@ -34,9 +34,15 @@ if __name__=="__main__" :
     with open("input.txt") as f:
         mat = [[float(x) for x in line.split()] for line in f]
     mat = np.matrix(mat)
+    identity = np.identity(mat.shape[0])
+    scalar = 0
+    print mat
+    mat = mat - scalar*identity
+    print mat
+    # mat = np.linalg.inv(mat)
     e,v = DirectPower(mat,100,0.001)
     v.shape = (1,v.shape[0])
     print "_"*64,"\n"
-    print "Eigen Value:\t",e
+    print "Eigen Value:\t",e+scalar
     print "Eigen Vector:\t",v
 

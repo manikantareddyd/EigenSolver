@@ -5,6 +5,8 @@ import sys
 def InversePower(mat,iterations,threshold):
     try:
         mat = np.linalg.inv(mat)
+        print "Incerse of the Matrix"
+        print mat
     except:
         print "Matrix Not Invertible"
         sys.exit(0)
@@ -40,9 +42,9 @@ if __name__=="__main__" :
     with open("input.txt") as f:
         mat = [[float(x) for x in line.split()] for line in f]
     mat = np.matrix(mat)
-    e,v = InversePower(mat,20,0.1)
+    e,v = InversePower(mat,100,0.001)
     v.shape = (1,v.shape[0])
     print "_"*64,"\n"
-    print "Eigen Value:\t",e
+    print "Eigen Value:\t",1/e
     print "Eigen Vector:\t",v
 
