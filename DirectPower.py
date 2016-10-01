@@ -30,13 +30,22 @@ def DirectPower(mat,iterations,threshold):
     print "Exceeded total Iterations"
     return M,x
 
-if __name__=="__main__" :
-    with open("input.txt") as f:
-        mat = [[float(x) for x in line.split()] for line in f]
-    mat = np.matrix(mat)
-    e,v = DirectPower(mat,100,0.001)
-    v.shape = (1,v.shape[0])
-    print "_"*64,"\n"
-    print "Eigen Value:\t",e
-    print "Eigen Vector:\t",v
+with open("input.txt") as f:
+    n = [int(x) for x in next(f).split()][0]
+    mat = []
+    for i in range(n):
+        mat.append([float(x) for x in next(f).split()])
+    
+    maxIter = [int(x) for x in next(f).split()][0]
+    
+    maxThres = [float(x) for x in next(f).split()][0]
+
+
+
+mat = np.matrix(mat)
+e,v = DirectPower(mat,maxIter,maxThres)
+v.shape = (1,v.shape[0])
+print "_"*64,"\n"
+print "Eigen Value:\t",e
+print "Eigen Vector:\t",v
 

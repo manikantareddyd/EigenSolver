@@ -32,9 +32,18 @@ def QRMethod(mat,iterations,threshold):
     print "Number of Iterations: ", i+1
     
 
-if __name__=="__main__" :
-    with open("input.txt") as f:
-        mat = [[float(x) for x in line.split()] for line in f]
-    mat = np.matrix(mat)
-    QRMethod(mat,10,0.001)
+
+with open("input.txt") as f:
+    n = [int(x) for x in next(f).split()][0]
+    mat = []
+    for i in range(n):
+        mat.append([float(x) for x in next(f).split()])
+    
+    maxIter = [int(x) for x in next(f).split()][0]
+    
+    maxThres = [float(x) for x in next(f).split()][0]
+
+    
+mat = np.matrix(mat)
+QRMethod(mat,maxIter, maxThres)
     
